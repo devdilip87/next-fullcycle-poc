@@ -1,8 +1,9 @@
 # full-cycle-poc
 
-Certainly! Here's a sample README file that explains how to run different types of pages (Server-Side Rendering, Client-Side Rendering, and Incremental Static Regeneration) in a Next.js application that fetches data from a GraphQL server using Apollo Client:
+This application have different types of pages (Server-Side Rendering, Client-Side Rendering, and Incremental Static Regeneration) in a Next.js application that fetches data from a GraphQL server using Apollo Client:
 
 Also Dockerising all these application and spinup the same using kubernetes minqube
+
 # Applications
 
 - Next js app - (car-listing)
@@ -13,6 +14,7 @@ Also Dockerising all these application and spinup the same using kubernetes minq
 # Next.js GraphQL Data Fetching Example
 
 This is a sample Next.js application that demonstrates different methods of fetching data from a GraphQL server using Apollo Client. The application includes the following types of pages:
+
 
 - Server-Side Rendering (SSR) Page
 - Client-Side Rendering (CSR) Page
@@ -29,15 +31,16 @@ This is a sample Next.js application that demonstrates different methods of fetc
 2. **Install Dependencies:**
 
    Navigate to the project directory and install the required dependencies for each application:
+    ```bash
+    cd next-fullcycle-poc/car-listing
+    npm install
 
-   cd next-fullcycle-poc/car-listing
-   npm install
+    cd next-fullcycle-poc/server/api-server
+    npm install
 
-   cd next-fullcycle-poc/server/api-server
-   npm install
-
-   cd next-fullcycle-poc/server/graphql-server
-   npm install
+    cd next-fullcycle-poc/server/graphql-server
+    npm install
+    ```
 
 3. **Set Up Apollo Client Configuration:**
 
@@ -126,6 +129,7 @@ Create similar YAML files for your GraphQL server and Next.js application, repla
 
 Apply the Kubernetes configurations to your Minikube cluster using `kubectl`:
 
+```bash
 cd next-fullcycle-poc/server/api-server
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
