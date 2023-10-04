@@ -93,7 +93,7 @@ docker push <user_name>/<tag>
 ![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/docker-image.png)
 
 ### Docker Containers
-![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/docker-containers.png)
+![docker containers](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/docker-containers.png)
 
 
 ```markdown
@@ -125,9 +125,9 @@ For each of your Dockerized components (API server, GraphQL server, and Next.js 
 
 Here's an example for the API server (`deployment.yaml`):
 
-![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/deployment-yaml.png)
+![deployment yaml](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/deployment-yaml.png)
 
-![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/service-yaml.png)
+![service yaml](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/service-yaml.png)
 
 Create similar YAML files for your GraphQL server and Next.js application, replacing `api` with appropriate labels and image names.
 
@@ -173,7 +173,7 @@ Repeat the process for your other services as needed.
 
 - create ingress yaml to define route for all services
 
-![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/ingress-yaml.png)
+![ingress yaml](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/ingress-yaml.png)
 
 ```bash
 cd next-fullcycle-poc
