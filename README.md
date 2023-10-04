@@ -184,14 +184,6 @@ kubectl apply -f ingress.yaml
 
 - Customize the Kubernetes configurations (YAML files) to match your specific setup, including image names, ports, and service types.
 
-## Cleanup
-
-When you're finished testing your applications, you can stop and delete the Minikube cluster:
-
-```bash
-minikube stop
-minikube delete
-```
 
 ## Dependencies
 
@@ -199,7 +191,6 @@ minikube delete
 - Apollo Client
 - GraphQL
 - docker
-- Minikube
 - kubectl
 
 ## License
