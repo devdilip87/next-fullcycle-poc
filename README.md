@@ -4,6 +4,13 @@ This application have different types of pages (Server-Side Rendering, Client-Si
 
 Also Dockerising all these application and spinup the same using kubernetes minqube
 
+1) node api (Car Listing) choose express or loopback or anything 
+2) GQL server which will hit this API
+3) Next JS APP create 5 pages list-ssr.ts, list-isr.ts, list-csr.ts
+4) These pages will fetch data from GQL, GQL will fetch data from API.
+5) Deploy all of it as a Kbernetce 2 instances of API, GQL, Next App
+6) Next App will hit these systems via single URL
+
 # Applications
 
 - Next js app - (car-listing)
@@ -82,9 +89,12 @@ create docker image push to docker hub
 docker image build -t <image_name>:<tag> <path>
 docker push <user_name>/<tag>
 
+### Docker images
+![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/docker-image.png)
 
+### Docker Containers
+![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/docker-containers.png)
 
-Now deploy your Dockerized applications (Node.js API server, GraphQL server, and Next.js application) using Minikube:
 
 ```markdown
 # Deploy and spinup Applications with Minikube
@@ -99,7 +109,9 @@ Before getting started, ensure you have the following installed on your machine:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - Docker (already configured to work with Minikube)
 
-## Step 1: Start Minikube
+```
+
+# Spinup all application through kubernets using docker images
 
 Start Minikube to create and start a local Kubernetes cluster:
 
@@ -107,25 +119,19 @@ Start Minikube to create and start a local Kubernetes cluster:
 minikube start
 ```
 
-## Step 2: Create Kubernetes Deployment and Service Files
+### Step 1: Create Kubernetes Deployment and Service Files
 
 For each of your Dockerized components (API server, GraphQL server, and Next.js application), create Kubernetes deployment and service YAML files. Adjust the image names and ports as needed.
 
 Here's an example for the API server (`deployment.yaml`):
 
-```yaml
-# Example YAML content for api-server deployment.yaml
+![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/deployment-yaml.png)
 
-# ... (Deployment configuration)
-
----
-
-# ... (Service configuration)
-```
+![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/service-yaml.png)
 
 Create similar YAML files for your GraphQL server and Next.js application, replacing `api` with appropriate labels and image names.
 
-## Step 3: Apply Kubernetes Configurations
+### Step 2: Apply Kubernetes Configurations
 
 Apply the Kubernetes configurations to your Minikube cluster using `kubectl`:
 
@@ -143,25 +149,36 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 ```
 
-## Step 4: Expose Services (if needed)
+### Step 3: Expose Services (if needed)
 
 Depending on your setup, you may need to expose services to access them outside the cluster. For example, to expose your Next.js application as a NodePort service:
 
-
+```bash
 kubectl expose deployment nextjs-deployment --type=NodePort --name=nextjs-service
 ```
 
-## Step 5: Access Your Applications
+### Step 4: Access Your Applications
 
 Use `minikube service` to get the URL of a service and access your applications. For example:
-
+```bash
 cd next-fullcycle-poc/server/api-server
 minikube service service
-
+```
 
 This will open a browser window or display the URL in your terminal, allowing you to access your Next.js application.
 
 Repeat the process for your other services as needed.
+
+# Ingress setup to run three application via single URL
+
+- create ingress yaml to define route for all services
+
+![docker images](https://github.com/devdilip87/next-fullcycle-poc/car-listing/src/images/ingress-yaml.png)
+
+```bash
+cd next-fullcycle-poc
+kubectl apply -f ingress.yaml
+```
 
 ## Customization
 
